@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { formatTime } from "./helper";
+import styled, { css } from "styled-components";
 
-const Pomodoro = () => {
+const Pomodoro = (props) => {
   const [timer, setTimer] = useState(1500);
   const [active, setActive] = useState(false);
+  const Button = styled.button`
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    &:hover {
+      background-color: palevioletred;
+    }
+    &:focus {
+      outline: none;
+    }
+
+    ${(props) =>
+      props.primary &&
+      css`
+        height: 200px;
+        width: 200px;
+      `}
+  `;
 
   useEffect(() => {
     const time = setTimeout(() => setTimer(timer - 1), 1000);
@@ -12,8 +34,12 @@ const Pomodoro = () => {
     }
   }, [timer, active]);
 
-  const handleTimer = () => {
+  const handleButtonClick = () => {
+    // Set the timer
     setActive(!active);
+
+    //Update the background from parent if timer is active or not
+    props.backgroundUpdate(active);
   };
 
   return (
@@ -21,22 +47,23 @@ const Pomodoro = () => {
       <h1>{formatTime(timer)}</h1>
       <div className="button-container">
         <span className="minute">
-          <button className="button smaller-button minute-button">
+          <Button className="button smaller-button minute-button">
             Add One Minute
-          </button>
+          </Button>
         </span>
         <span className="pomodoro">
-          <button
+          <Button
+            primary
             className="button bigger-button pomodoro-button"
-            onClick={handleTimer}
+            onClick={handleButtonClick}
           >
             Start/Pause
-          </button>
+          </Button>
         </span>
         <span className="break">
-          <button className="button smaller-button break-button">
+          <Button className="button smaller-button break-button">
             Start Break
-          </button>
+          </Button>
         </span>
       </div>
     </div>

@@ -1,9 +1,3 @@
-.main {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
-
 .container h1 {
   font-size: 48px;
   margin-bottom: 40px;
@@ -14,29 +8,4 @@
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 50px;
-}
-
-.button {
-  border: none;
-  text-align: center;
-  text-decoration: none;
-}
-
-.button:focus {
-  outline: none;
-}
-
-.button:hover {
-  background-color: aliceblue;
-}
-.smaller-button {
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-}
-
-.bigger-button {
-  height: 250px;
-  width: 250px;
-  border-radius: 50%;
 }
