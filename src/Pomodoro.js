@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { formatTime } from "./helper";
 import styled, { css } from "styled-components";
+import justsaying from "./justsaying.mp3";
 
 const Button = styled.button`
   border: none;
@@ -25,30 +26,20 @@ const Button = styled.button`
 `;
 
 const Pomodoro = (props) => {
-  const [timer, setTimer] = useState(5);
+  const [timer, setTimer] = useState(10);
   const [isActive, setIsActive] = useState(false); // Inform if the timer is active
-  const [isBreak, setIsBreak] = useState(false);
-  const [isPomo, setIsPomo] = useState(false);
-  const [status, setStatus] = useState("");
-
-  const startBreak = () => {
-    setTimer(300);
-    setIsActive(true);
-    setIsBreak(true);
-    setIsPomo(false);
-    // handle background color and other stuff
-  };
+  const [feature, setFeature] = useState("pomodoro");
+  let notif = new Audio(justsaying);
 
   const handleNext = () => {
-    setIsBreak(!isBreak);
-    setIsPomo(!isPomo);
-    setIsActive(!isActive);
-    if (isBreak) {
-      setStatus("break");
+    if (feature === "pomodoro") {
+      setFeature("break");
+      setTimer(300);
+    } else if (feature === "break") {
+      setFeature("pomodoro");
+      setTimer(1500);
     }
-    if (isPomo) {
-      setStatus("pomo");
-    }
+    setIsActive(false);
   };
 
   useEffect(() => {
@@ -60,8 +51,8 @@ const Pomodoro = (props) => {
     }
 
     if (timer === 0) {
-      window.alert("times up");
-      startBreak();
+      notif.play();
+      handleNext();
     }
     console.log(timer);
     return () => clearInterval(interval);
@@ -74,7 +65,7 @@ const Pomodoro = (props) => {
         <span className="minute">
           <Button
             className="button smaller-button minute-button"
-            onClick={() => setTimer(timer + 2)}
+            onClick={() => setTimer(timer + 60)}
           >
             Add One Minute
           </Button>
@@ -93,7 +84,7 @@ const Pomodoro = (props) => {
             className="button smaller-button break-button"
             onClick={handleNext}
           >
-            Skip
+            {`Skip to ${feature === "pomodoro" ? "break" : "timer"} `}
           </Button>
         </span>
       </div>
