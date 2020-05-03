@@ -1,29 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { formatTime } from "./helper";
-import styled, { css } from "styled-components";
-import justsaying from "./justsaying.mp3";
-
-const Button = styled.button`
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  &:hover {
-    background-color: palevioletred;
-  }
-  &:focus {
-    outline: none;
-  }
-
-  ${(props) =>
-    props.primary &&
-    css`
-      height: 200px;
-      width: 200px;
-    `}
-`;
+import justsaying from "./resources/justsaying.mp3";
+import { Button } from "./css/style";
 
 const Pomodoro = ({ updateBG }) => {
   const [timer, setTimer] = useState(10);

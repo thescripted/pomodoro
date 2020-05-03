@@ -46,3 +46,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.container {
+  position: absolute;
+  top: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container h1 {
+  font-size: 48px;
+  margin-bottom: 40px;
+}
+
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 50px;
+}
