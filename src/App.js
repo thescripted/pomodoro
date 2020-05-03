@@ -1,26 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Pomodoro from "./Pomodoro";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+
+const Main = styled.div`
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #aaa;
+  & header {
+    font-size: 60px;
+    margin-bottom: 100px;
+  }
+`;
 
 const App = () => {
-  const Main = styled.div`
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background: #aaa;
-    & .main header {
-      font-size: 60px;
-    }
-  `;
-
   return (
     <Main>
       <header>The Pomodoro Timer</header>
       <Pomodoro />
       <footer>
         <p>Created by Benjamin Kinga</p>
-        <p>contact information</p>
+        <p>github.com/thescripted</p>
       </footer>
     </Main>
   );

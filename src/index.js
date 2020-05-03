@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import SandBox from "./SandBox";
+// import SandBox from "./SandBox";
 ReactDOM.render(
   <React.StrictMode>
     <App />

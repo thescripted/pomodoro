@@ -19,6 +19,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+footer {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: #3f4c61;
+  color: white;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
