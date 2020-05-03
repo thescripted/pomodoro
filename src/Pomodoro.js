@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { formatTime } from "./helper";
 import styled, { css } from "styled-components";
 import justsaying from "./justsaying.mp3";
@@ -25,10 +25,12 @@ const Button = styled.button`
     `}
 `;
 
-const Pomodoro = (props) => {
+const Pomodoro = ({ updateBG }) => {
   const [timer, setTimer] = useState(10);
   const [isActive, setIsActive] = useState(false); // Inform if the timer is active
   const [feature, setFeature] = useState("pomodoro");
+  const _mounted = useRef(false);
+
   let notif = new Audio(justsaying);
 
   const handleNext = () => {
@@ -56,6 +58,15 @@ const Pomodoro = (props) => {
     }
     console.log(timer);
     return () => clearInterval(interval);
+  });
+
+  useEffect(() => {
+    // Current Hack to prevent first-render
+    if (!_mounted.current) {
+      _mounted.current = true;
+    } else {
+      updateBG(feature);
+    }
   });
 
   return (

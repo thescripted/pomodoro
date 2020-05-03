@@ -3,6 +3,19 @@ html {
   height: 100%;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: paleturquoise;
+}
+
+a:hover {
+  color: palevioletred;
+}
+
 #root {
   width: 100%;
   height: 100%;
