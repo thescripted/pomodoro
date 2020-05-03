@@ -56,7 +56,7 @@ const Pomodoro = ({ updateBG }) => {
             className="button smaller-button minute-button"
             onClick={() => setTimer(timer + 60)}
           >
-            Add One Minute
+            <i class="fas fa-plus"></i>
           </Button>
         </span>
         <span className="pomodoro">
@@ -65,7 +65,7 @@ const Pomodoro = ({ updateBG }) => {
             className="button bigger-button pomodoro-button"
             onClick={() => setIsActive(!isActive)}
           >
-            Start/Pause
+            <i class="fas fa-play"></i>
           </Button>
         </span>
         <span className="break">
@@ -73,7 +73,7 @@ const Pomodoro = ({ updateBG }) => {
             className="button smaller-button break-button"
             onClick={handleNext}
           >
-            {`Skip to ${feature === "pomodoro" ? "break" : "timer"} `}
+            <i class="fas fa-fast-forward"></i>{" "}
           </Button>
         </span>
       </div>

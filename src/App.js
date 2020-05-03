@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Pomodoro from "./Pomodoro";
 import { Main } from "./css/style";
 
 const App = () => {
   const [styleFromChild, setStyleFromChild] = useState("#cfb695"); // Not the cleanest way to handle this
+  const _removeHeader = useRef(false);
 
   const updateBG = (feature) => {
-    let bgcolor = feature === "pomodoro" ? "#ff6242" : "#b1ffad";
+    let bgcolor = feature === "pomodoro" ? "#bd432a" : "#86b384";
     setStyleFromChild(bgcolor);
+    _removeHeader.current = true;
   };
 
   return (
     <Main style={{ background: styleFromChild }}>
-      {console.log(styleFromChild)}
       <header>The Pomodoro Timer</header>
       <Pomodoro updateBG={updateBG} />
       <footer>

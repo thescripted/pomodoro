@@ -68,3 +68,8 @@ code {
   align-items: center;
   margin-bottom: 50px;
 }
+
+.button-container span {
+  display: flex;
+  flex-direction: column;
+}

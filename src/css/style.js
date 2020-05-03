@@ -4,11 +4,17 @@ export const Button = styled.button`
   border: none;
   text-align: center;
   text-decoration: none;
+  font-size: 25px;
+  color: #fff;
   height: 100px;
   width: 100px;
   border-radius: 50%;
+  transition-duration: 0.2s;
+  border: 7px solid #fff;
+  background: transparent;
   &:hover {
-    background-color: palevioletred;
+    border: 7px solid #313757;
+    color: #313757;
   }
   &:focus {
     outline: none;
@@ -19,6 +25,7 @@ export const Button = styled.button`
     css`
       height: 200px;
       width: 200px;
+      font-size: 75px;
     `}
 `;
 
@@ -29,6 +36,7 @@ export const Main = styled.div`
   & header {
     font-size: 60px;
     margin-bottom: 100px;
+    transition: 0.2s;
   }
   transition: background 0.5s linear;
 `;
