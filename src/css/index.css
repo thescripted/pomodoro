@@ -56,6 +56,10 @@ code {
   width: 100%;
 }
 
+.hide {
+  display: hidden;
+}
+
 .container h1 {
   font-size: 48px;
   margin-bottom: 40px;

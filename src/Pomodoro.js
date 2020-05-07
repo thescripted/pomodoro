@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { formatTime } from "./helper";
 import justsaying from "./resources/justsaying.mp3";
 import { Button } from "./css/style";
+import "./css/index.css";
 
 const Pomodoro = ({ updateBG }) => {
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(1500);
   const [isActive, setIsActive] = useState(false); // Inform if the timer is active
   const [feature, setFeature] = useState("pomodoro");
+  const [playToggle, setPlayToggle] = useState(false);
   const _mounted = useRef(false);
 
   let notif = new Audio(justsaying);
@@ -47,6 +49,11 @@ const Pomodoro = ({ updateBG }) => {
     }
   });
 
+  const handleStart = () => {
+    setIsActive(!isActive);
+    setPlayToggle(!playToggle);
+  };
+
   return (
     <div className="container">
       <h1>{formatTime(timer)}</h1>
@@ -60,12 +67,8 @@ const Pomodoro = ({ updateBG }) => {
           </Button>
         </span>
         <span className="pomodoro">
-          <Button
-            primary
-            className="button bigger-button pomodoro-button"
-            onClick={() => setIsActive(!isActive)}
-          >
-            <i class="fas fa-play"></i>
+          <Button primary onClick={handleStart}>
+            <i class={`fas fa-play ${playToggle && "hide"}`}></i>
           </Button>
         </span>
         <span className="break">
